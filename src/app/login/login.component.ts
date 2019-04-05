@@ -11,7 +11,7 @@
 */
 
 import { Component, OnInit } from '@angular/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, RouterModule } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
     this.authenticationService.logout();
 
     // obter o URL de retorno dos parâmetros da rota ou usar como padrão "/"
-    this.returnUrl = thid.route.snapshot.queryParams['returnUrl'] || '/';
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
   // getter para facilitar o acesso aos campos de formulário

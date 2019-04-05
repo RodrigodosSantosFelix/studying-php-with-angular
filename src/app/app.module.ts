@@ -16,8 +16,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 
-import { FakeBackendProvider } from './helpers'; // Usa para crear o backend falso
-import { Routing } from './app.routing';
+import { fakeBackendProvider } from './app/helpers'; // Usa para crear o backend falso
+import { routerComponents } from './app.routing';
 import { AlertComponent } from './directives';
 import { AuthGuard } from './guards';
 import { JwtInterceptor, ErrorInterceptor } from './helpers';
@@ -32,13 +32,14 @@ import { RegisterComponent } from './registro';
     AlertComponent,
     HomeComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    routerComponents
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     HttpClientModule,
-    routing
+
   ],
   providers: [
     AuthGuard,
