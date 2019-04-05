@@ -1,0 +1,59 @@
+<!--
+  O modelo de componente de registro contém um formulário de registro simples
+  com campos para nome, sobrenome, nome de usuário e senha. Ele exibe mensagens
+  de validação para campos inválidos quando o botão de envio é clicado. O evento
+  de envio de formulário está vinculado ao método onSubmit () do componente de
+  registro.
+
+  O componente usa a validação de formulário reativo para validar os campos de
+  entrada.
+  -->
+
+<h2>Registrar</h2>
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <label for="primeiroNome">Primeiro Nome</label>
+    <input type="text" formControlName="primeiroNome" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.primeiroNome.errors }" />
+    <div *ngIf="submitted && f.primeiroNome.errors" class="invalid-feedback">
+      <div *ngIf="f.primeiroNome.errors.required">
+        O Primeiro Nome é Requerido
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="ultimoNome">Ultimo Nome</label>
+    <input type="text" formControlName="ultimoNome" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.ultimoNome.errors }" />
+    <div *ngIf="submitted && f.ultimoNome.errors" class="invalid-feedback">
+      <div *ngIf=f.ultimoNome.errors.required>
+        O Ultimo Nome é Requerido
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="nome">Nome de usuário</label>
+    <input type="text" formControlName="nome" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.nome.errors}" />
+    <div *ngIf="submited && f.nome.errors" class="invalid-feedback">
+      <div *ngIf="f.nome.errors.required">
+        Nome de Usuário Requerido
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="senha">Senha</label>
+    <input type="password" formControlName="senha" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.senha.errors}" />
+    <div *ngIf="submitted && f.senha.errors" class="invalid-feedback">
+      <div *ngIf="f.senha.errors.required">
+        Senha é Requerida
+      </div>
+      <div *ngIf="f.senha.errors.minlength">
+        A senha deve possuir mais de 6 caracteres
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <button [disabled]="loading" class="btn btn-primary">Registrar</button>
+    <img *ngIf="loading"
+      src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+    <a [routerLink]="['/login']" class="btn btn-link">Cancelar</a>
+  </div>
+</form>

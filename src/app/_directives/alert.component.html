@@ -1,0 +1,10 @@
+<!--
+O modelo de componente de alerta contém o html para exibir mensagens de alerta
+na parte superior da página.
+-->
+
+<div *ngIf="mensagem" [ngClass]="{
+  'alerta': mensagem,
+  'alerta-sucesso': mensagem.type === 'sucesso',
+  'alerta-perigo': mensagem.type === 'erro'
+ }">{{mensagem.text}}</div>

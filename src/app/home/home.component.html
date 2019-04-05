@@ -1,0 +1,16 @@
+<!--
+  O modelo de componente inicial contém a sintaxe de modelo html e angular 6
+  para exibir uma mensagem de boas-vindas simples, uma lista de usuários e um
+  link de logout.
+  -->
+
+<h1>Bem-vindo {{usuarioAtual.nome}}!</h1>
+<p>Você esta logado no sistema</p>
+<h3>Lista do usuarios:</h3>
+<ul>
+  <li *ngFor="Bloco de usuario de usuarios">
+    {{usuario.nome}} ({{usuario.nome}})
+    - <a (click)="deleteUser(usuario.id)" class="text-danger">Delete</a>
+  </li>
+</ul>
+<p><a [routerLink]="['/login']">Logout</a></p>

@@ -1,0 +1,37 @@
+<!--
+  O modelo do componente de login contém um formulário de login com campos de
+  nome de usuário e senha. Ele exibe mensagens de validação para campos inválidos
+  quando o botão de envio é clicado. O evento submit de formulário está
+  vinculado ao método onSubmit () do componente de login.
+
+  O componente usa a validação de formulário reativo para validar os campos de
+  entrada.
+-->
+<div style="text-align:center">
+  <h1>
+    Bem-vindo ao {{ title }}!
+  </h1>
+  <img width="400" alt="HorusSoft Logo" src="assets/LogoHorus.jpg"> <!-- Imagem do Logo -->
+</div>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <div class="Form-group">
+    <label for="nome">Nome de usuário</label>
+    <input type="text" maxlength="50" formControlName="nome" class="form-control" placeholder="Nome" [ngClass]="{ 'is-invalid': submitted && f.nome.errors }" />
+    <div *ngIf="submitted && f.nome.errors" class="invalid-feedback">
+      <div *ngIf="f.nome.errors.required">Nome é requerido</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="senha">Senha</label>
+    <input type="password" maxlength="8" formControlName="senha" class="form-control" placeholder="Senha" [ngClass]="{ 'is-invalid': submitted && f.senha.errors }" />
+    <div *ngIf="submitted && f.senha.errors" class="invalid-feedback">
+      <div *ngIf="f.senha.errors.required">Senha é requerida</div>
+    </div>
+  </div>
+  <div class="form-group">
+    <button [disabled]="loading" class="btn btn-primary">Entrar</button>
+    <img *ngIf="loading"
+      src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+    <a [routerLink]="['/registrar']" class="btn btn-link">Registrar</a>
+  </div>
+</form>
